@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SShareHeader.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +41,17 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    [SShareView handleOpenUrl:url];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [SShareView handleOpenUrl:url];
+    return YES;
 }
 
 @end

@@ -28,8 +28,12 @@
 }
 
 - (void)showShareView {
-    
-    [[SShareView share] showShareView];
+    SShareMessage *  message = [SShareMessage new];
+    message.title = @"测试";
+    message.content = @"测试小尾巴~~~~";
+    message.image = [UIImage imageNamed:@"cat.jpg"];
+    message.url = @"http://www.baidu.com";
+    [SShareView showShareViewWithMessage:message];
 }
 
 - (void)didReceiveMemoryWarning {
