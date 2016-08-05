@@ -57,9 +57,6 @@
         authRequest.redirectURI = @"http://marrymemo.com";
         authRequest.scope = @"all";
         WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:wbMessage authInfo:authRequest access_token:nil];
-//                request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
-//                                     @"Other_Info_1": [NSNumber numberWithInt:123]};
-//        request.shouldOpenWeiboAppInstallPageIfNotInstalled = NO;
         [WeiboSDK sendRequest:request];
     }else if (type == shareTo_TimeLine) {
     }

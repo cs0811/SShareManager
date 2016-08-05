@@ -31,8 +31,8 @@
     SShareMessage *  message = [SShareMessage new];
     message.title = @"测试";
     message.content = @"测试小尾巴~~~~";
-    message.image = [UIImage imageNamed:@"cat.jpg"];
-    message.webUrl = @"http://www.baidu.com";
+//    message.image = [UIImage imageNamed:@"cat.jpg"];
+//    message.webUrl = @"http://www.baidu.com";
     [SShareView showShareViewWithMessage:message];
 }
 

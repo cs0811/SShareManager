@@ -21,9 +21,9 @@
 
 
 // key
-#define kShare_QQKey              @"100370679"
-#define kShare_WXKey              @"wx9acfc1464c57b9b4"
-#define kShare_SinaKey            @"2726144177"
+#define kShare_QQID                 @"100370679"
+#define kShare_WXKey                @"wx9acfc1464c57b9b4"
+#define kShare_SinaKey              @"2726144177"
 
 
 #endif /* SShareHeader_h */
