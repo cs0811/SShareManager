@@ -81,8 +81,6 @@ static SShareView * share;
     }else if ([chanel isEqualToString:ShareChannel_Sina]) {
         [SShareManager shareToChannel:Sina withMessage:share.message];
     }
-    
-    [self hideShareView];
 }
 
 #pragma mark - show
@@ -115,6 +113,7 @@ static SShareView * share;
 
 #pragma mark handleOpen
 + (void)handleOpenUrl:(NSURL *)url {
+    [share hideShareView];
     [SShareManager handleOpenUrl:url];
 }
 
@@ -138,10 +137,14 @@ static SShareView * share;
         if (allItems%ShareViewMaxLineNum != 0 ) {
             lines = lines+1;
         }
-        CGFloat h = ShareViewItemH*lines+2*ShareViewTopSpace+(lines-1)*ShareViewItemSpaceV;
+        CGFloat itemW = 0;
+        itemW = (kScreenW-2*ShareViewLeftSpace-(ShareViewMaxLineNum-1)*ShareViewItemSpaceH)/ShareViewMaxLineNum;
+        CGFloat ratio = ShareViewItemRatio;
+        CGFloat itemH = itemW/ratio;
+        CGFloat h = itemH*lines+2*ShareViewTopSpace+(lines-1)*ShareViewItemSpaceV;
         UICollectionViewFlowLayout * layout = [UICollectionViewFlowLayout new];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.itemSize = CGSizeMake(ShareViewItemW, ShareViewItemH);
+        layout.itemSize = CGSizeMake(itemW, itemH);
         layout.sectionInset = UIEdgeInsetsMake(ShareViewTopSpace, ShareViewLeftSpace, ShareViewTopSpace, ShareViewLeftSpace);
         _colletionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, kScreenH, kScreenW, h) collectionViewLayout:layout];
         _colletionView.dataSource = self;

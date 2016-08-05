@@ -9,17 +9,13 @@
 #import <UIKit/UIKit.h>
 
 /**
- *  item宽
+ *  item宽高比(宽/高)
  */
-#define ShareViewItemW               60.
-/**
- *  item高
- */
-#define ShareViewItemH               80.
+#define ShareViewItemRatio          3/4.
 /**
  *  左右边距
  */
-#define ShareViewLeftSpace           20.
+#define ShareViewLeftSpace           10.
 /**
  *  上下边距
  */
@@ -28,6 +24,10 @@
  *  item间距（竖直）
  */
 #define ShareViewItemSpaceV          5.
+/**
+ *  item间距（水平）
+ */
+#define ShareViewItemSpaceH          10.
 /**
  *  每行的最大个数
  */
