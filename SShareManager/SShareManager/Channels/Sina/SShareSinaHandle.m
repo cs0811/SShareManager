@@ -30,14 +30,14 @@
     
     if (type == ShareTo_Friend) {
         WBMessageObject *wbMessage = [WBMessageObject message];
-        if ([message.url notNull]) {
-            // 分享多媒体
+        if ([message.webUrl notNull]) {
+            // 分享多网址
             WBWebpageObject *webpage = [WBWebpageObject object];
             webpage.objectID = @"identifier1";
             webpage.title = message.title?:@"";
             webpage.description = message.content?:@"";
             webpage.thumbnailData = [UIImage zipImageWithImage:message.image];
-            webpage.webpageUrl = message.url;
+            webpage.webpageUrl = message.webUrl;
             wbMessage.mediaObject = webpage;
         }else if (message.image) {
             // 分享图片

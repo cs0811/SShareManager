@@ -32,7 +32,7 @@
     message.title = @"测试";
     message.content = @"测试小尾巴~~~~";
     message.image = [UIImage imageNamed:@"cat.jpg"];
-    message.url = @"http://www.baidu.com";
+    message.webUrl = @"http://www.baidu.com";
     [SShareView showShareViewWithMessage:message];
 }
 

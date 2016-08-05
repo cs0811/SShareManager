@@ -37,8 +37,9 @@
 @property (nonatomic, copy) NSString * title;
 // 单独分享文字时，优先读取content
 @property (nonatomic, copy) NSString * content;
+// 真实数据图片 (会在内部做压缩处理）
 @property (nonatomic, strong) UIImage * image;
-@property (nonatomic, copy) NSString * url;
+@property (nonatomic, copy) NSString * webUrl;
 @end
 
 @interface SShareView : UIView

@@ -15,7 +15,7 @@
     if (!image) {
         return nil;
     }
-    CGFloat maxFileSize = 32*1024;
+    CGFloat maxFileSize = 30*1024;
     CGFloat compression = 0.9f;
     CGFloat maxCompression = 0.1f;
     NSData *compressedData = UIImageJPEGRepresentation(image, compression);
