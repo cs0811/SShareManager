@@ -44,13 +44,17 @@
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    [SShareView handleOpenUrl:url];
+    [SShare handleOpenUrl:url completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+        NSLog(@"reusltCode -- %ld \n errorInfo -- %@",reusltCode,errorInfo);
+    }];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
-    [SShareView handleOpenUrl:url];
+    [SShare handleOpenUrl:url completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+        NSLog(@"reusltCode -- %ld \n errorInfo -- %@",reusltCode,errorInfo);
+    }];
     return YES;
 }
 

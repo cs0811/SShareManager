@@ -18,11 +18,11 @@
     return NO;
 }
 
-+ (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type {
++ (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block {
     
 }
 
-+ (void)handleOpenUrl:(NSURL *)url {
++ (void)handleOpenUrl:(NSURL *)url completion:(SShareCompletionBlock)block {
     
 }
 @end

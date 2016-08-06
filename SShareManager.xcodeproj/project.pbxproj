@@ -33,8 +33,8 @@
 		D4ECB4B11D53369A00373886 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ECB4B01D53369A00373886 /* UIImage+Compress.m */; };
 		D4ECB4B31D533DC900373886 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D4ECB4B21D533DC900373886 /* cat.jpg */; };
 		D4ECB4B51D534C7000373886 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ECB4B41D534C7000373886 /* libc++abi.tbd */; };
+		D4FA996A1D558ABA00E70E10 /* SShare.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA99691D558ABA00E70E10 /* SShare.m */; };
 		D4FAE3441D51BCE800A6A767 /* SShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAE33D1D51BCE800A6A767 /* SShareManager.m */; };
-		D4FAE3451D51BCE800A6A767 /* SShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAE3411D51BCE800A6A767 /* SShareView.m */; };
 		D4FAE3461D51BCE800A6A767 /* SShareViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAE3431D51BCE800A6A767 /* SShareViewCell.m */; };
 		D4FAE34B1D51EDBB00A6A767 /* SShareSinaHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAE34A1D51EDBB00A6A767 /* SShareSinaHandle.m */; };
 		D4FAE34E1D51EDCF00A6A767 /* SShareQQHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FAE34D1D51EDCF00A6A767 /* SShareQQHandle.m */; };
@@ -90,11 +90,11 @@
 		D4ECB4B01D53369A00373886 /* UIImage+Compress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
 		D4ECB4B21D533DC900373886 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cat.jpg; path = ../../cat.jpg; sourceTree = "<group>"; };
 		D4ECB4B41D534C7000373886 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		D4FA99681D558ABA00E70E10 /* SShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShare.h; sourceTree = "<group>"; };
+		D4FA99691D558ABA00E70E10 /* SShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SShare.m; sourceTree = "<group>"; };
 		D4FAE33C1D51BCE800A6A767 /* SShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShareManager.h; sourceTree = "<group>"; };
 		D4FAE33D1D51BCE800A6A767 /* SShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SShareManager.m; sourceTree = "<group>"; };
 		D4FAE33E1D51BCE800A6A767 /* SShareHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShareHeader.h; sourceTree = "<group>"; };
-		D4FAE3401D51BCE800A6A767 /* SShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShareView.h; sourceTree = "<group>"; };
-		D4FAE3411D51BCE800A6A767 /* SShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SShareView.m; sourceTree = "<group>"; };
 		D4FAE3421D51BCE800A6A767 /* SShareViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShareViewCell.h; sourceTree = "<group>"; };
 		D4FAE3431D51BCE800A6A767 /* SShareViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SShareViewCell.m; sourceTree = "<group>"; };
 		D4FAE3491D51EDBB00A6A767 /* SShareSinaHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SShareSinaHandle.h; sourceTree = "<group>"; };
@@ -248,6 +248,8 @@
 		D4FAE3361D51BCE800A6A767 /* SShareManager */ = {
 			isa = PBXGroup;
 			children = (
+				D4FA99681D558ABA00E70E10 /* SShare.h */,
+				D4FA99691D558ABA00E70E10 /* SShare.m */,
 				D4FAE33E1D51BCE800A6A767 /* SShareHeader.h */,
 				D4FAE3481D51C6FC00A6A767 /* Resource */,
 				D4FAE3471D51C65100A6A767 /* Categorys */,
@@ -312,8 +314,6 @@
 		D4FAE33F1D51BCE800A6A767 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D4FAE3401D51BCE800A6A767 /* SShareView.h */,
-				D4FAE3411D51BCE800A6A767 /* SShareView.m */,
 				D4FAE3421D51BCE800A6A767 /* SShareViewCell.h */,
 				D4FAE3431D51BCE800A6A767 /* SShareViewCell.m */,
 			);
@@ -465,7 +465,6 @@
 			files = (
 				D4B144771D1CD52C00E969F5 /* ViewController.m in Sources */,
 				D4ECB4B11D53369A00373886 /* UIImage+Compress.m in Sources */,
-				D4FAE3451D51BCE800A6A767 /* SShareView.m in Sources */,
 				D4B144741D1CD52C00E969F5 /* AppDelegate.m in Sources */,
 				D4FAE3511D51EDDC00A6A767 /* SShareWXHandle.m in Sources */,
 				D4FAE3541D51EE5100A6A767 /* SShareBaseHandle.m in Sources */,
@@ -473,6 +472,7 @@
 				D4FAE3461D51BCE800A6A767 /* SShareViewCell.m in Sources */,
 				D4ECB4AE1D532DC600373886 /* NSString+NotNull.m in Sources */,
 				D4FAE34B1D51EDBB00A6A767 /* SShareSinaHandle.m in Sources */,
+				D4FA996A1D558ABA00E70E10 /* SShare.m in Sources */,
 				D4FAE3441D51BCE800A6A767 /* SShareManager.m in Sources */,
 				D4FAE34E1D51EDCF00A6A767 /* SShareQQHandle.m in Sources */,
 			);

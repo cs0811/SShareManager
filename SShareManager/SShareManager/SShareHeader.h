@@ -15,7 +15,7 @@
 #define kScreenH    [UIScreen mainScreen].bounds.size.height
 
 // import
-#import "SShareView.h"
+#import "SShare.h"
 #import "NSString+NotNull.h"
 #import "UIImage+Compress.h"
 

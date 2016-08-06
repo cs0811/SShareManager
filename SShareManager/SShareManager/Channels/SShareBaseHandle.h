@@ -10,8 +10,8 @@
 #import "SShareHeader.h"
 
 typedef NS_ENUM(NSInteger,ShareToType) {
-    ShareTo_Friend = 0,
-    shareTo_TimeLine ,
+    ShareTo_Friend = 0,         // 好友
+    shareTo_TimeLine ,          // 朋友圈
 };
 
 @class SShareMessage;
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger,ShareToType) {
 
 + (BOOL)canBeOpen;
 
-+ (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type;
++ (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block;
 
-+ (void)handleOpenUrl:(NSURL *)url;
++ (void)handleOpenUrl:(NSURL *)url completion:(SShareCompletionBlock)block;
 @end

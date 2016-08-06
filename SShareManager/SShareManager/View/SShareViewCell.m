@@ -50,11 +50,11 @@
     
     [self.iconImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(wself);
-        make.height.equalTo(wself).multipliedBy(0.7);
+        make.height.equalTo(wself).multipliedBy(0.6);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(wself);
-        make.top.equalTo(wself.iconImg.mas_bottom).offset(5);
+        make.top.equalTo(wself.iconImg.mas_bottom);
     }];
 }
 
@@ -70,7 +70,7 @@
         title = @"微信好友";
         icon = @"refresh";
     }else if ([chanel isEqualToString:ShareChannel_WX_TimeLine]) {
-        title = @"朋友圈";
+        title = @"微信朋友圈";
         icon = @"refresh";
     }else if ([chanel isEqualToString:ShareChannel_Sina]) {
         title = @"新浪微博";

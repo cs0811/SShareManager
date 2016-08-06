@@ -6,7 +6,7 @@
 //  Copyright © 2016年 tongxuan. All rights reserved.
 //
 
-#import "SShareView.h"
+#import "SShare.h"
 #import "SShareViewCell.h"
 #import "SShareManager.h"
 
@@ -14,16 +14,17 @@
 @implementation SShareMessage
 @end
 
-static SShareView * share;
+static SShare * share;
+static SShareCompletionBlock _completionBlock;
 
-@interface SShareView ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface SShare ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UIView * maskView;
 @property (nonatomic, strong) UICollectionView * colletionView;
 @property (nonatomic, strong) NSArray * channelsArr;
 @property (nonatomic, strong) SShareMessage * message;
 @end
 
-@implementation SShareView
+@implementation SShare
 
 - (instancetype)init {
     self = [super init];
@@ -44,12 +45,14 @@ static SShareView * share;
 
 #pragma mark loadUI
 - (void)loadUI {
+    if (self.channelsArr.count == 0) {
+        NSLog(@"没有可用的分享渠道");
+        return;
+    }
+    
     [self addSubview:self.maskView];
     [self addSubview:self.colletionView];
-    self.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
-
-    // 判断可用的渠道
-    
+    self.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH);    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -84,9 +87,9 @@ static SShareView * share;
 }
 
 #pragma mark - show
-+ (void)showShareViewWithMessage:(SShareMessage *)message {
-    share = [SShareView new];
-//    [self.colletionView reloadData];
++ (void)showShareViewWithMessage:(SShareMessage *)message completion:(SShareCompletionBlock)block {
+    share = [SShare new];
+    _completionBlock = block;
     share.message = message;
     UIWindow * mainWindow = [[UIApplication sharedApplication].delegate window];
     [mainWindow addSubview:share];
@@ -112,7 +115,8 @@ static SShareView * share;
 }
 
 #pragma mark handleOpen
-+ (void)handleOpenUrl:(NSURL *)url {
++ (void)handleOpenUrl:(NSURL *)url completion:(SShareCompletionBlock)block {
+    _completionBlock = block;
     [share hideShareView];
     [SShareManager handleOpenUrl:url];
 }

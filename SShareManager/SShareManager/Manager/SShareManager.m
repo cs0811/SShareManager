@@ -45,20 +45,45 @@
 
 + (void)shareToChannel:(ShareChanel)chanel withMessage:(SShareMessage *)message {
     if (chanel == QQ_Friend) {
-        [SShareQQHandle shareMessage:message toType:ShareTo_Friend];
+        [SShareQQHandle shareMessage:message toType:ShareTo_Friend completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
     }else if (chanel == WX_Friend) {
-        [SShareWXHandle shareMessage:message toType:ShareTo_Friend];
+        [SShareWXHandle shareMessage:message toType:ShareTo_Friend completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
     }else if (chanel == WX_TimeLine) {
-        [SShareWXHandle shareMessage:message toType:shareTo_TimeLine];
+        [SShareWXHandle shareMessage:message toType:shareTo_TimeLine completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
     }else if (chanel == Sina) {
-        [SShareSinaHandle shareMessage:message toType:ShareTo_Friend];
+        [SShareSinaHandle shareMessage:message toType:ShareTo_Friend completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
     }
 }
 
 + (void)handleOpenUrl:(NSURL *)url {
-    [SShareQQHandle handleOpenUrl:url];
-    [SShareWXHandle handleOpenUrl:url];
-    [SShareSinaHandle handleOpenUrl:url];
+    // tencent100370679://response_from_qq?source=qq&source_scheme=mqqapi&error=0&version=1
+    // wx9acfc1464c57b9b4://platformId=wechat
+    // wb2726144177://response?id=BFA9DC72-51CD-40C4-942F-18758C683F7B&sdkversion=2.5
+    
+    if ([url.absoluteString hasPrefix:[NSString stringWithFormat:@"%@://platformId=wechat",kShare_WXKey]]) {
+        // 微信
+        [SShareWXHandle handleOpenUrl:url completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
+    }else if ([url.absoluteString hasPrefix:[NSString stringWithFormat:@"tencent%@://response_from_qq?source=qq&source_scheme=mqqapi",kShare_QQID]]) {
+        // QQ
+        [SShareQQHandle handleOpenUrl:url completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
+    }else if ([url.absoluteString hasPrefix:[NSString stringWithFormat:@"wb%@://response",kShare_SinaKey]]) {
+        // 新浪微博
+        [SShareSinaHandle handleOpenUrl:url completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            
+        }];
+    }
 }
 
 @end

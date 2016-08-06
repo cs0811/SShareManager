@@ -31,9 +31,11 @@
     SShareMessage *  message = [SShareMessage new];
     message.title = @"测试";
     message.content = @"测试小尾巴~~~~";
-//    message.image = [UIImage imageNamed:@"cat.jpg"];
-//    message.webUrl = @"http://www.baidu.com";
-    [SShareView showShareViewWithMessage:message];
+    message.image = [UIImage imageNamed:@"cat.jpg"];
+    message.webUrl = @"http://www.baidu.com";
+    [SShare showShareViewWithMessage:message completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+        NSLog(@"VC reusltCode -- %ld \n errorInfo -- %@",reusltCode,errorInfo);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
