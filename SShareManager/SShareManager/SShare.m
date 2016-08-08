@@ -133,7 +133,6 @@ static SShareCompletionBlock _completionBlock;
 
 #pragma mark handleOpen
 + (void)handleOpenUrl:(NSURL *)url completion:(SShareCompletionBlock)block {
-    _completionBlock = block;
     [share hideShareViewAnimation:YES];
     [SShareManager handleOpenUrl:url completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
         block((SShareReusltCode)reusltCode,errorInfo);

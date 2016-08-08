@@ -60,7 +60,7 @@
         }];
     }else if (chanel == Sina) {
         [SShareSinaHandle shareMessage:message toType:ShareTo_Friend completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
-            
+            block((SShareMReusltCode)reusltCode,errorInfo);
         }];
     }
 }
