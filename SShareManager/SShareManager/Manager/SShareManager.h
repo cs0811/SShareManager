@@ -20,7 +20,16 @@ typedef NS_ENUM(NSInteger, ShareChanel) {
     Sina ,
 };
 
+typedef NS_ENUM(NSInteger,SShareMReusltCode) {
+    SShareMReuslt_Unknown    = 0,        // 未知
+    SShareMReuslt_Success ,              // 成功
+    SShareMReuslt_UserCancel ,           // 用户取消
+    SShareMReuslt_Failed     ,           // 失败
+};
+
 @class SShareMessage;
+
+typedef void(^SShareMCompletionBlock)(SShareMReusltCode reusltCode, NSString * errorInfo);
 
 @interface SShareManager : NSObject
 
@@ -37,9 +46,12 @@ typedef NS_ENUM(NSInteger, ShareChanel) {
  *  @param chanel  渠道
  *  @param message 消息
  */
-+ (void)shareToChannel:(ShareChanel)chanel withMessage:(SShareMessage *)message;
++ (void)shareToChannel:(ShareChanel)chanel withMessage:(SShareMessage *)message completion:(SShareMCompletionBlock)block;
 
 
-+ (void)handleOpenUrl:(NSURL *)url;
++ (void)handleOpenUrl:(NSURL *)url completion:(SShareMCompletionBlock)block;
+
+
++ (BOOL)isCanShareInWeiboAPP;
 
 @end

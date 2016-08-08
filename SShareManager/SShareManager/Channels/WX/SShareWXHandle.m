@@ -10,6 +10,7 @@
 #import "WXApi.h"
 
 static SShareCompletionBlock _respBlock;
+static SShareCompletionBlock _resultBlock;
 
 @interface SShareWXHandle ()<WXApiDelegate>
 
@@ -28,6 +29,7 @@ static SShareCompletionBlock _respBlock;
 }
 
 + (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block {
+    _resultBlock = block;
     CGFloat scene = 0;
     if (type == ShareTo_Friend) {
         scene = WXSceneSession;
@@ -114,6 +116,7 @@ static SShareCompletionBlock _respBlock;
         }
         
         _respBlock(code,error);
+        _resultBlock(code,error);
     }
 }
 

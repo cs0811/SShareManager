@@ -11,6 +11,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 
 static SShareCompletionBlock _respBlock;
+static SShareCompletionBlock _resultBlock;
 
 @interface SShareQQHandle ()<QQApiInterfaceDelegate>
 
@@ -31,6 +32,7 @@ static SShareCompletionBlock _respBlock;
 }
 
 + (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block {
+    _resultBlock = block;
     if (type == ShareTo_Friend) {
         
     }else if (type == shareTo_TimeLine) {
@@ -109,6 +111,7 @@ static SShareCompletionBlock _respBlock;
             }
         }
         _respBlock(code,error);
+        _resultBlock(code,error);
     }
 }
 

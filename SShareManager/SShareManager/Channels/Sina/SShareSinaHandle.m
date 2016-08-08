@@ -10,6 +10,7 @@
 #import "WeiboSDK.h"
 
 static SShareCompletionBlock _respBlock;
+static SShareCompletionBlock _resultBlock;
 
 @interface SShareSinaHandle ()<WeiboSDKDelegate>
 
@@ -21,15 +22,19 @@ static SShareCompletionBlock _respBlock;
     return YES;
 }
 
++ (BOOL)isCanShareInWeiboAPP {
+   return [WeiboSDK isCanShareInWeiboAPP];
+}
+
 + (BOOL)registerAPIs {
-    [WeiboSDK enableDebugMode:YES];
+//    [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kShare_SinaKey];
     
     return YES;
 }
 
 + (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block {
-    
+    _resultBlock = block;
     if (type == ShareTo_Friend) {
         WBMessageObject *wbMessage = [WBMessageObject message];
         if ([message.webUrl notNull]) {
@@ -114,6 +119,7 @@ static SShareCompletionBlock _respBlock;
     }
     
     _respBlock(code,error);
+    _resultBlock(code,error);
 }
 
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request {

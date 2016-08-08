@@ -76,13 +76,24 @@ static SShareCompletionBlock _completionBlock;
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     NSString * chanel = self.channelsArr[indexPath.row];
     if ([chanel isEqualToString:ShareChannel_QQ_Friend]) {
-        [SShareManager shareToChannel:QQ_Friend withMessage:share.message];
+        [SShareManager shareToChannel:QQ_Friend withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+            _completionBlock((SShareReusltCode)reusltCode,errorInfo);
+        }];
     }else if ([chanel isEqualToString:ShareChannel_WX_Friend]) {
-        [SShareManager shareToChannel:WX_Friend withMessage:share.message];
+        [SShareManager shareToChannel:WX_Friend withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+            _completionBlock((SShareReusltCode)reusltCode,errorInfo);
+        }];
     }else if ([chanel isEqualToString:ShareChannel_WX_TimeLine]) {
-        [SShareManager shareToChannel:WX_TimeLine withMessage:share.message];
+        [SShareManager shareToChannel:WX_TimeLine withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+            _completionBlock((SShareReusltCode)reusltCode,errorInfo);
+        }];
     }else if ([chanel isEqualToString:ShareChannel_Sina]) {
-        [SShareManager shareToChannel:Sina withMessage:share.message];
+        [SShareManager shareToChannel:Sina withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+            _completionBlock((SShareReusltCode)reusltCode,errorInfo);
+        }];
+        if (![SShareManager isCanShareInWeiboAPP]) {
+            [self hideShareViewAnimation:NO];
+        }
     }
 }
 
@@ -93,7 +104,6 @@ static SShareCompletionBlock _completionBlock;
     share.message = message;
     UIWindow * mainWindow = [[UIApplication sharedApplication].delegate window];
     [mainWindow addSubview:share];
-    [mainWindow bringSubviewToFront:share];
     share.frame = mainWindow.bounds;
     
     CGFloat h = CGRectGetHeight(share.colletionView.frame);
@@ -104,21 +114,30 @@ static SShareCompletionBlock _completionBlock;
 }
 
 #pragma mark - hide
-- (void)hideShareView {
+- (void)hideShareViewAnimation:(BOOL)animation {
     CGFloat h = CGRectGetHeight(share.colletionView.frame);
-    [UIView animateWithDuration:0.25 animations:^{
+    CGFloat time = 0;
+    if (animation) {
+        time = 0.25;
+    }
+    [UIView animateWithDuration:time animations:^{
         share.colletionView.frame = CGRectMake(0, kScreenH, kScreenW, h);
         share.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
 }
+- (void)hideShareView {
+    [self hideShareViewAnimation:YES];
+}
 
 #pragma mark handleOpen
 + (void)handleOpenUrl:(NSURL *)url completion:(SShareCompletionBlock)block {
     _completionBlock = block;
-    [share hideShareView];
-    [SShareManager handleOpenUrl:url];
+    [share hideShareViewAnimation:YES];
+    [SShareManager handleOpenUrl:url completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+        block((SShareReusltCode)reusltCode,errorInfo);
+    }];
 }
 
 #pragma mark - getter

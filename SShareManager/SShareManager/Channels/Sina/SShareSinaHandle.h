@@ -11,5 +11,6 @@
 
 @interface SShareSinaHandle : SShareBaseHandle
 
++ (BOOL)isCanShareInWeiboAPP;
 
 @end
