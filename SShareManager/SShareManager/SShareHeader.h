@@ -25,5 +25,10 @@
 #define kShare_WXKey                @"wx9acfc1464c57b9b4"
 #define kShare_SinaKey              @"2726144177"
 
+// icon
+#define kWX_FriendIcon              @"refresh"
+#define kWX_TimeLineIcon            @"refresh"
+#define kQQ_FriendIcon              @"refresh"
+#define KSinaIcon                   @"refresh"
 
 #endif /* SShareHeader_h */

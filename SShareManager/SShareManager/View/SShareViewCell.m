@@ -65,16 +65,16 @@
     NSString * icon = @"";
     if ([chanel isEqualToString:ShareChannel_QQ_Friend]) {
         title = @"QQ";
-        icon = @"refresh";
+        icon = kQQ_FriendIcon;
     }else if ([chanel isEqualToString:ShareChannel_WX_Friend]) {
         title = @"微信好友";
-        icon = @"refresh";
+        icon = kWX_FriendIcon;
     }else if ([chanel isEqualToString:ShareChannel_WX_TimeLine]) {
         title = @"微信朋友圈";
-        icon = @"refresh";
+        icon = kWX_TimeLineIcon;
     }else if ([chanel isEqualToString:ShareChannel_Sina]) {
         title = @"新浪微博";
-        icon = @"refresh";
+        icon = KSinaIcon;
     }
     
     self.titleLabel.text = title;
