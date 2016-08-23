@@ -52,7 +52,6 @@ static SShareCompletionBlock _completionBlock;
     
     [self addSubview:self.maskView];
     [self addSubview:self.colletionView];
-    self.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH);    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -97,13 +96,12 @@ static SShareCompletionBlock _completionBlock;
     }
 }
 
-#pragma mark - show
-+ (void)showShareViewWithMessage:(SShareMessage *)message completion:(SShareCompletionBlock)block {
-    share = [SShare new];
-    _completionBlock = block;
-    share.message = message;
+#pragma mark layout
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
     UIWindow * mainWindow = [[UIApplication sharedApplication].delegate window];
-    [mainWindow addSubview:share];
     share.frame = mainWindow.bounds;
     
     CGFloat h = CGRectGetHeight(share.colletionView.frame);
@@ -111,6 +109,15 @@ static SShareCompletionBlock _completionBlock;
         share.colletionView.frame = CGRectMake(0, kScreenH-h, kScreenW, h);
         share.maskView.frame = CGRectMake(0, 0, kScreenW, kScreenH-h);
     }];
+}
+
+#pragma mark - show
++ (void)showShareViewWithMessage:(SShareMessage *)message completion:(SShareCompletionBlock)block {
+    share = [SShare new];
+    _completionBlock = block;
+    share.message = message;
+    UIWindow * mainWindow = [[UIApplication sharedApplication].delegate window];
+    [mainWindow addSubview:share];
 }
 
 #pragma mark - hide
