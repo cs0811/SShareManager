@@ -66,6 +66,9 @@
     if ([chanel isEqualToString:ShareChannel_QQ_Friend]) {
         title = @"QQ";
         icon = kQQ_FriendIcon;
+    }else if ([chanel isEqualToString:ShareChannel_QQ_TimeLine]) {
+        title = @"QQ空间";
+        icon = kQQ_TimeLineIcon;
     }else if ([chanel isEqualToString:ShareChannel_WX_Friend]) {
         title = @"微信好友";
         icon = kWX_FriendIcon;

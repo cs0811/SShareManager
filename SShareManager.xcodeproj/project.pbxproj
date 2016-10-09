@@ -372,6 +372,8 @@
 				TargetAttributes = {
 					D4B1446B1D1CD52C00E969F5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = NH4A83L8JB;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -537,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -575,7 +577,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -588,6 +590,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 元智 项 (WTU8BKH68A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NH4A83L8JB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/QQ/QQSDK",
@@ -600,9 +604,9 @@
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/Sina/libWeiboSDK",
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/WX/WXSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.suncloud.wedding;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.toing.Lewo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "032e2d3a-ee02-40ce-bb70-1af59d58da0e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -612,6 +616,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 元智 项 (WTU8BKH68A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = NH4A83L8JB;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/QQ/QQSDK",
@@ -624,9 +630,9 @@
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/Sina/libWeiboSDK",
 					"$(PROJECT_DIR)/SShareManager/SShareManager/Channels/WX/WXSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.suncloud.wedding;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.toing.Lewo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "032e2d3a-ee02-40ce-bb70-1af59d58da0e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

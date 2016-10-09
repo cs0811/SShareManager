@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 UIKIT_EXTERN NSString * const ShareChannel_QQ_Friend;
+UIKIT_EXTERN NSString * const ShareChannel_QQ_TimeLine;
 UIKIT_EXTERN NSString * const ShareChannel_WX_Friend;           // 微信好友
 UIKIT_EXTERN NSString * const ShareChannel_WX_TimeLine;         // 微信朋友圈
 UIKIT_EXTERN NSString * const ShareChannel_Sina;
 
 typedef NS_ENUM(NSInteger, ShareChanel) {
     QQ_Friend = 0,
+    QQ_TimeLine ,
     WX_Friend ,
     WX_TimeLine ,
     Sina ,

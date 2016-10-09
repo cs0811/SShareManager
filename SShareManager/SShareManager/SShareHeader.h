@@ -29,6 +29,7 @@
 #define kWX_FriendIcon              @"refresh"
 #define kWX_TimeLineIcon            @"refresh"
 #define kQQ_FriendIcon              @"refresh"
+#define kQQ_TimeLineIcon            @"refresh"
 #define KSinaIcon                   @"refresh"
 
 #endif /* SShareHeader_h */

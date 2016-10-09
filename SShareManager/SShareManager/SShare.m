@@ -37,9 +37,6 @@ static SShareCompletionBlock _completionBlock;
 
 
 - (void)registerChannels {
-    /**
-     *  @{@"ShareChannel_QQ_Friend",@"ShareChannel_WX_Friend",@"ShareChannel_WX_TimeLine",@"ShareChannel_Sina"}
-     */
     self.channelsArr = [SShareManager registerAPIs];
 }
 
@@ -76,6 +73,10 @@ static SShareCompletionBlock _completionBlock;
     NSString * chanel = self.channelsArr[indexPath.row];
     if ([chanel isEqualToString:ShareChannel_QQ_Friend]) {
         [SShareManager shareToChannel:QQ_Friend withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
+            _completionBlock((SShareReusltCode)reusltCode,errorInfo);
+        }];
+    }else if ([chanel isEqualToString:ShareChannel_QQ_TimeLine]) {
+        [SShareManager shareToChannel:QQ_TimeLine withMessage:share.message completion:^(SShareMReusltCode reusltCode, NSString *errorInfo) {
             _completionBlock((SShareReusltCode)reusltCode,errorInfo);
         }];
     }else if ([chanel isEqualToString:ShareChannel_WX_Friend]) {

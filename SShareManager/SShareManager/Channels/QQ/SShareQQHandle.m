@@ -33,21 +33,26 @@ static SShareCompletionBlock _resultBlock;
 
 + (void)shareMessage:(SShareMessage *)message toType:(ShareToType)type completion:(SShareCompletionBlock)block {
     _resultBlock = block;
-    if (type == ShareTo_Friend) {
-        
-    }else if (type == shareTo_TimeLine) {
-    }
     
     if ([message.webUrl notNull]) {
         // 分享网址
         QQApiNewsObject *webObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:message.webUrl] title:message.title description:message.content previewImageData:[UIImage zipImageWithImage:message.image] targetContentType:QQApiURLTargetTypeNews];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:webObj];
-        [QQApiInterface sendReq:req];
+        
+        if (type == ShareTo_Friend) {
+            [QQApiInterface sendReq:req];
+        }else if (type == shareTo_TimeLine) {
+            [QQApiInterface SendReqToQZone:req];
+        }
     }else if (message.image) {
         // 分享图片
         QQApiImageObject *imgObj = [QQApiImageObject objectWithData:UIImageJPEGRepresentation(message.image, 1) previewImageData:[UIImage zipImageWithImage:message.image] title:message.title description:message.content];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
-        [QQApiInterface sendReq:req];
+        if (type == ShareTo_Friend) {
+            [QQApiInterface sendReq:req];
+        }else if (type == shareTo_TimeLine) {
+            [QQApiInterface SendReqToQZone:req];
+        }
     }else {
         // 分享文字
         NSString * text = @"";
@@ -58,7 +63,11 @@ static SShareCompletionBlock _resultBlock;
         }
         QQApiTextObject *imgObj = [QQApiTextObject objectWithText:text];
         SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
-        [QQApiInterface sendReq:req];
+        if (type == ShareTo_Friend) {
+            [QQApiInterface sendReq:req];
+        }else if (type == shareTo_TimeLine) {
+            [QQApiInterface SendReqToQZone:req];
+        }
     }
 }
 

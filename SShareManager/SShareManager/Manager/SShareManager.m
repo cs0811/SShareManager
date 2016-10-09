@@ -12,6 +12,7 @@
 #import "SShareQQHandle.h"
 
  NSString * const ShareChannel_QQ_Friend = @"ShareChannel_QQ_Friend";
+ NSString * const ShareChannel_QQ_TimeLine = @"ShareChannel_QQ_TimeLine";
  NSString * const ShareChannel_WX_Friend = @"ShareChannel_WX_Friend";          // 微信好友
  NSString * const ShareChannel_WX_TimeLine = @"ShareChannel_WX_TimeLine";      // 微信朋友圈
  NSString * const ShareChannel_Sina = @"ShareChannel_Sina";
@@ -24,6 +25,7 @@
         // 没有网页版，需要判断是否安装QQ
         if ([SShareQQHandle registerAPIs]) {
             [channelArr addObject:ShareChannel_QQ_Friend];
+            [channelArr addObject:ShareChannel_QQ_TimeLine];
         }
     }
     if ([SShareWXHandle canBeOpen]) {
@@ -48,6 +50,10 @@
 + (void)shareToChannel:(ShareChanel)chanel withMessage:(SShareMessage *)message completion:(SShareMCompletionBlock)block {
     if (chanel == QQ_Friend) {
         [SShareQQHandle shareMessage:message toType:ShareTo_Friend completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
+            block((SShareMReusltCode)reusltCode,errorInfo);
+        }];
+    }else if (chanel == QQ_TimeLine) {
+        [SShareQQHandle shareMessage:message toType:shareTo_TimeLine completion:^(SShareReusltCode reusltCode, NSString *errorInfo) {
             block((SShareMReusltCode)reusltCode,errorInfo);
         }];
     }else if (chanel == WX_Friend) {
